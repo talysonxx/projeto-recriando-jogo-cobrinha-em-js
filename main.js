@@ -24,7 +24,7 @@ function iniciarJogo(){
     criarCobra()
 
     let snakeX = snake[0].x
-    let snakeY = snak[0].y
+    let snakeY = snake[0].y
 
     if(direction == 'right') snakeX += box
     if(direction == 'left') snakeX -= box
