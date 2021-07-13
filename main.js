@@ -60,7 +60,15 @@ function iniciarJogo(){
     if(direction == 'up') snakeY -= box
     if(direction == 'down') snakeY += box
 
-    snake.pop()
+    if(snakeX != comida.x || snakeY != comida.y){
+        snake.pop()
+    }else{
+        // Math.floor retorna o menor número inteiro, tira a parte flutuante
+        // 45.95 = 45
+        // -45.95 = -46
+        comida.x = Math.floor(Math.random() * 15 + 1) * box
+        comida.y = Math.floor(Math.random() * 15 + 1) * box
+    }
 
     let novaCabeca = {
         x: snakeX,
