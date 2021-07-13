@@ -1,7 +1,7 @@
 let canvas = window.document.querySelector('canvas#snake')
 let context = canvas.getContext('2d')
 let box = 32
-let snake = []
+let snake = [] // a cobra será uma lista com uma série de coordenadas
 snake.push({
     x: 8 * box,
     y: 8 * box
@@ -42,8 +42,6 @@ function update(event){
 }
 
 function iniciarJogo(){
-
-
     // para cobra sempre retornar
     if(snake[0].x > 15 * box && direction == 'right')snake[0].x = 0
     if(snake[0].x < 0 && direction == 'left') snake[0]. x = 16 * box
