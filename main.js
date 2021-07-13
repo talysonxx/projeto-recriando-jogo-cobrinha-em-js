@@ -19,7 +19,20 @@ function criarCobra(){
         context.fillRect(snake[i].x, snake[i].y, box, box)
     }
 }
+
+// detecta quando pressionarmos o keyborad
+window.document.addEventListener('keydown', update)
+function update(event){
+    if(event.keyCode == 37 && direction != 'right') direction = 'left'
+    if(event.keyCode == 38 && direction != 'down') direction = 'up'
+    if(event.keyCode == 39 && direction != 'left') direction = 'right'
+    if(event.keyCode == 40 && direction != 'up') direction = 'down'
+}
+
 function iniciarJogo(){
+    // para cobra nunca retornar
+    if(snake[0].x > 15 * box && direction == 'right')snake[0].x = 0
+
     criarBackground()
     criarCobra()
 
@@ -28,17 +41,17 @@ function iniciarJogo(){
 
     if(direction == 'right') snakeX += box
     if(direction == 'left') snakeX -= box
-    if(direction == 'up') snakeY += box
-    if(direction == 'down') snakeY -= box
+    if(direction == 'up') snakeY -= box
+    if(direction == 'down') snakeY += box
 
     snake.pop()
 
     let novaCabeca = {
         x: snakeX,
         y: snakeY
-    }
-
+    } 
+    // adiciona o elemento no início do array
     snake.unshift(novaCabeca)
 }
 
-let jogo = setInterval(iniciarJogo(), 100)
+let jogo = setInterval(iniciarJogo, 100)
