@@ -8,6 +8,14 @@ snake.push({
 })
 let direction = 'right'
 
+let comida = {
+    // Math.floor retorna o menor número inteiro, tira a parte flutuante
+    // 45.95 = 45
+    // -45.95 = -46
+    x: Math.floor(Math.random() * 15 + 1) * box,
+    y: Math.floor(Math.random() * 15 + 1) * box
+}
+
 function criarBackground(){
     context.fillStyle = 'lightgreen'
     // x, y, w, h
@@ -18,6 +26,10 @@ function criarCobra(){
         context.fillStyle = 'green'
         context.fillRect(snake[i].x, snake[i].y, box, box)
     }
+}
+function desenharComida(){
+    context.fillStyle = 'red'
+    context.fillRect(comida.x, comida.y, box, box)
 }
 
 // detecta quando pressionarmos o keyborad
@@ -38,6 +50,7 @@ function iniciarJogo(){
 
     criarBackground()
     criarCobra()
+    desenharComida()
 
     let snakeX = snake[0].x
     let snakeY = snake[0].y
